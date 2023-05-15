@@ -26,7 +26,7 @@ export default function ServiceAdd() {
 		<form onSubmit={handleSubmit}>			
 			<div className="form-group row mb-0 ml-1">
 				<label className="col-4 col-form-label" htmlFor="name"><b>Наименование работы</b></label>
-				<label className="col-4 col-form-label" htmlFor="name"><b>Стоимость работы</b></label>							
+				<label className="col-4 col-form-label" htmlFor="price"><b>Стоимость работы</b></label>							
 			</div>
 			<div className="form-group row">
 				<div className="col-4">
