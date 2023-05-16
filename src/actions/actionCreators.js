@@ -5,7 +5,8 @@ import {
   CHANGE_SERVICE_FIELD,
   SET_EDIT_SERVICE_FIELD,
   RESET_EDIT_SERVICE_FIELD,
-  RESET_SERVICE_FIELD
+  RESET_SERVICE_FIELD,
+  CHANGE_FILTER_FIELD,
  } from './actionTypes';
 
 export function addService(name, price) {
@@ -34,4 +35,8 @@ export function resetEditServiceField() {
 
 export function resetServiceField() {
   return {type: RESET_SERVICE_FIELD}
+}
+
+export function changeFilterField(value) {
+  return {type: CHANGE_FILTER_FIELD, payload: {value}}
 }
