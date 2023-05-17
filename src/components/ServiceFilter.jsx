@@ -1,13 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { changeFilterField } from '../actions/actionCreators';
+import { changeFilterField, filterItems } from '../actions/actionCreators';
 
 export default function ServiceFilter() {
 	const filter = useSelector(state => state.serviceFilter);
 	const dispatch = useDispatch();
-
+	console.log('ServiceFilter', filter);
   const handleChange = evt => {
 		const { value } = evt.target;
 		dispatch(changeFilterField(value));
+		dispatch(filterItems(value));
 	}
   return (
     <form >
@@ -16,7 +17,7 @@ export default function ServiceFilter() {
 			</div>
 			<div className="form-group row">
 				<div className="col-4">
-					<input className="form-control" id="filter" name='name' onChange={handleChange} value={filter.valuealue} />
+					<input className="form-control" id="filter" name='name' onChange={handleChange} value={filter.value} />
 				</div>				
 			</div>		
     </form>    

@@ -7,6 +7,8 @@ import {
   RESET_EDIT_SERVICE_FIELD,
   RESET_SERVICE_FIELD,
   CHANGE_FILTER_FIELD,
+  INIT_FILTERED_ITEMS,
+  FILTER_ITEMS,
  } from './actionTypes';
 
 export function addService(name, price) {
@@ -39,4 +41,12 @@ export function resetServiceField() {
 
 export function changeFilterField(value) {
   return {type: CHANGE_FILTER_FIELD, payload: {value}}
+}
+
+export function initFilteredItems(filteredItems) {
+  return {type: INIT_FILTERED_ITEMS, payload: {filteredItems}}
+}
+
+export function filterItems(filter) {
+  return {type: FILTER_ITEMS, payload: {filter}}
 }
