@@ -2,13 +2,12 @@ import {
   ADD_SERVICE,
   UPDATE_SERVICE,
   REMOVE_SERVICE,
+  FILTER_SERVICE,
   CHANGE_SERVICE_FIELD,
   SET_EDIT_SERVICE_FIELD,
   RESET_EDIT_SERVICE_FIELD,
   RESET_SERVICE_FIELD,
-  CHANGE_FILTER_FIELD,
-  INIT_FILTERED_ITEMS,
-  FILTER_ITEMS,
+  CHANGE_FILTER_FIELD,  
  } from './actionTypes';
 
 export function addService(name, price) {
@@ -21,6 +20,10 @@ export function updateService(id, name, price) {
 
 export function removeService(id) {
   return {type: REMOVE_SERVICE, payload: {id}};
+}
+
+export function filterService(filter) {
+  return {type: FILTER_SERVICE, payload: {filter}}
 }
 
 export function changeServiceField(name, value) {
@@ -39,14 +42,6 @@ export function resetServiceField() {
   return {type: RESET_SERVICE_FIELD}
 }
 
-export function changeFilterField(value) {
-  return {type: CHANGE_FILTER_FIELD, payload: {value}}
-}
-
-export function initFilteredItems(filteredItems) {
-  return {type: INIT_FILTERED_ITEMS, payload: {filteredItems}}
-}
-
-export function filterItems(filter) {
-  return {type: FILTER_ITEMS, payload: {filter}}
+export function changeFilterField(filter) {
+  return {type: CHANGE_FILTER_FIELD, payload: {filter}}
 }

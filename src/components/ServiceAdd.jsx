@@ -1,9 +1,10 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {changeServiceField, resetServiceField, resetEditServiceField, addService, updateService} from '../actions/actionCreators';
+import {changeServiceField, resetServiceField, resetEditServiceField, addService, updateService, filterService} from '../actions/actionCreators';
 
 export default function ServiceAdd() {
 	const item = useSelector(state => state.serviceAdd);
+	const { filter } = useSelector(state => state.serviceFilter);
 	const dispatch = useDispatch();
 
 	const handleChange = evt => {
@@ -19,7 +20,8 @@ export default function ServiceAdd() {
 	const handleSubmit = evt => {
 			evt.preventDefault();
 			item.isEdit ? dispatch(updateService(item.editId, item.name, item.price)) : dispatch(addService(item.name, item.price));
-			dispatch(resetServiceField());			
+			dispatch(resetServiceField());
+			dispatch(filterService(filter));		
 	}
 
 	return (

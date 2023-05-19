@@ -1,19 +1,15 @@
-import React, { useEffect } from 'react'
-import {useSelector, useDispatch} from 'react-redux';
-import {removeService, setEditServiceField, changeServiceField, initFilteredItems} from '../actions/actionCreators';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeService, setEditServiceField, changeServiceField, filterService } from '../actions/actionCreators';
 
 export default function ServiceList() {
-  const items = useSelector(state => state.serviceList);
-  const { isEdit } = useSelector(state => state.serviceAdd);  
-  const { filteredItems } = useSelector(state => state.serviceFilter);  
+  const { filteredItems } = useSelector(state => state.serviceList);
+  const { isEdit } = useSelector(state => state.serviceAdd); 
+  const { filter } = useSelector(state => state.serviceFilter);   
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(initFilteredItems(items));
-  }, [items]);  
 
   const handleRemove = id => {
     dispatch(removeService(id));
+    dispatch(filterService(filter));
   }
 
   const handleEdit = (name, price, id) => {
@@ -21,7 +17,7 @@ export default function ServiceList() {
     dispatch(changeServiceField('price', price));
     dispatch(setEditServiceField(id));
   }
-  console.log("redraw list", filteredItems);
+  
   return (
     <ul className="list-group ">
       {filteredItems && filteredItems.map(o => (
